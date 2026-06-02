@@ -41,6 +41,23 @@ class LinkedList:
             
         current.next = current.next.next
         
+    # to remove from the end
+
+    def remove_from_end(self,n):
+        dummy = Node(0)
+        dummy.next = self.head
+
+        p1 = dummy
+        p2 = dummy
+
+        for i in range(n):
+            p1 = p1.next
+        while p1.next is not None:
+            p1 = p1.next
+            p2 = p2.next
+        p2.next = p2.next.next
+
+        return dummy.next
         
 if __name__ == "__main__":
     l1 = LinkedList()
@@ -54,10 +71,19 @@ if __name__ == "__main__":
     print("Original list:")
     l1.display()
     
-    print("\nExecuting: remove_elel_nth_position(-1)")
-    l1.remove_elel_nth_position(-1)  # Handled safely now!
-    l1.display()
+    # print("\nExecuting: remove_elel_nth_position(-1)")
+    # l1.remove_elel_nth_position(-1)  # Handled safely now!
+    # l1.display()
     
-    print("\nExecuting: remove_elel_nth_position(2) (Removes 3rd element)")
-    l1.remove_elel_nth_position(2)
+    # print("\nExecuting: remove_elel_nth_position(2) (Removes 3rd element)")
+    # l1.remove_elel_nth_position(2)
+    # l1.display()
+
+    l1.remove_from_end(2)
     l1.display()
+
+
+
+
+
+
