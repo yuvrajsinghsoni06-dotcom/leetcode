@@ -1,0 +1,49 @@
+# to removbe duplicay data from sorted linkedlist:
+
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+
+class LinkedList:
+    def __init__(self):
+        self.head = None
+
+    def display(self):
+        current = self.head
+        elements = []
+        while current:
+            elements.append(str(current.data))
+            current = current.next
+        print(" -> ".join(elements) + " -> None")
+
+    def remove_duplicacy(self,list1):
+        dummy = Node(0)
+        current = dummy
+        p1 = list1.head
+        while p1:
+            if current.data != p1.data:
+                current.next = p1
+                current = current.next
+            p1 = p1.next
+        current.next = None
+        self.head = dummy.next
+        return self.head
+    
+if __name__ == "__main__":
+    list1 = LinkedList()
+    list1.head = Node(1)
+    list1.head.next = Node(1)
+    list1.head.next.next = Node(2)
+    list1.head.next.next.next = Node(2)
+    list1.head.next.next.next.next = Node(3)
+    list1.head.next.next.next.next.next = Node(3)
+    list1.head.next.next.next.next.next.next = Node(4)
+
+    print("Orginal LinkedList: ")
+    list1.display()
+
+    rem_dup = LinkedList()
+    rem_dup.remove_duplicacy(list1)
+    print("LinkedList after removing duplicates: ")
+    rem_dup.display()
