@@ -17,17 +17,23 @@ class LinkedList:
             current = current.next
         print(" -> ".join(elements) + " -> None")
 
-    def remove_duplicacy(self,list1):
-        dummy = Node(0)
-        current = dummy
-        p1 = list1.head
-        while p1:
-            if current.data != p1.data:
-                current.next = p1
+    def remove_duplicacy(self, list1):
+        # Handle edge case: empty list or single-node list
+        if not list1.head:
+            return None
+        
+        current = list1.head
+        
+        # Traverse until the second to last node
+        while current and current.next:
+            if current.data == current.next.data:
+                # 🟢 Skip the duplicate node by pointing past it
+                current.next = current.next.next
+            else:
+                # 🟢 Only move forward if no duplicate was found
                 current = current.next
-            p1 = p1.next
-        current.next = None
-        self.head = dummy.next
+                
+        self.head = list1.head
         return self.head
     
 if __name__ == "__main__":
