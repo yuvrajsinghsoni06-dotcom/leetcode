@@ -13,10 +13,21 @@ class LinkedList:
     def display(self):
         current = self.head
         elements = []
+        visited = set()
+        
         while current:
+            # If we've seen this node before, we have a cycle
+            if current in visited:
+                elements.append(f"(Cycle back to {current.value})")
+                break
+                
+            visited.add(current)
             elements.append(str(current.value))
             current = current.next
-        print("-> ".join(elements) + " -> None")  
+            
+        # Only add "-> None" if we didn't break early from a cycle
+        tail = "" if current in visited else " -> None"
+        print("-> ".join(elements) + tail)
     def cycle(self):
         fast = self.head
         slow = self.head
