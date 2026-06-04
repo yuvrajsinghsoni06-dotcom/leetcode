@@ -50,7 +50,7 @@ if __name__ == "__main__":
     List1.head.next = Node(2)
     List1.head.next.next = Node(4)
     List1.head.next.next.next = Node(5)
+    List1.head.next.next.next.next = List1.head.next
 
     List1.display()
-    # List1.head.next.next.next = List1.head
     print(List1.cycle())
