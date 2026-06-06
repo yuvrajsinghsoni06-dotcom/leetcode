@@ -22,7 +22,7 @@ class LinkedList:
         # Step 1: Find the middle of the linked list
         slow = self.head
         fast = self.head
-        while fast and fast.next:
+        while fast:
             slow = slow.next
             fast = fast.next.next
 
@@ -50,7 +50,7 @@ class LinkedList:
 if __name__ == "__main__":
     llist = LinkedList()  # Renamed 'list' to 'llist' to avoid built-in conflict
     llist.head = Node(1)
-    llist.head.next = Node(2)
+    llist.head.next = Node(1)
     llist.head.next.next = Node(2)
     llist.head.next.next.next = Node(1)
 
