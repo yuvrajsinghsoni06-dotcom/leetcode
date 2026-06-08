@@ -20,6 +20,8 @@ class LinkedList:
 
 
     def reversing_a_list(self, left: int , right:int):
+        if not self.head or left == right:
+            return self.head
         dummy = Node(0)
         dummy.next = self.head
         prev = dummy
