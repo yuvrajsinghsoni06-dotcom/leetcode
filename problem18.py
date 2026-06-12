@@ -1,4 +1,5 @@
-# sort the list in ascending order:-
+""" sort the list in ascending order:- method -1 we can just like converting - Link list into an array, then sort it using the built-in sort method, then again rebuild the link list from it.
+It will give a time complexity of + O(log n), which will be an optimal time complexity, but as we are storing the data using an array, we will get a space complexity of O(n)."""
 
 class Node:
     def __init__(self,data):
