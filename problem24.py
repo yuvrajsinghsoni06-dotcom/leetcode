@@ -15,8 +15,8 @@ if __name__ == "__main__":
     att = Solution()
     stack = [1,2,3,4,5,6]
     print(att.removal(stack))
-    att.display()
+    att.display(stack)
 
     att.addition(stack,11)
-    att.display()
+    att.display(stack)
 
