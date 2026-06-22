@@ -3,20 +3,15 @@
 
 class Solution:
     def maxBalloon(self,text: str):
-        if not text:
-           return 0
-        count = 0
-        collection = ["b","a","l","l","o","o","n"]
+        count ={"b" : 0 , "a" : 0 , "l" : 0, "o" : 0,  "n":0}
         for char in text:
-            if char in collection:
-                collection.remove(char)
-            else:
-                continue
-        if len(collection) == 0:
-               count +=1
-        else:
-            return 
-        return count
+            if char in count:
+                count[char] += 1
+            
+        count["l"] = count["l"] // 2
+        count["o"] = count["o"] // 2
+
+        return min(count["b"], count["a"] , count["l"] ,  count["o"] , count["n"])
 
 
 if __name__ == "__main__":
