@@ -1,5 +1,6 @@
-cost = [6,4,7,2,3,9]
-print(cost)
+# 1189. Maximum Number of Balloons
 
-cost = sorted(cost)
-print(cost)
+
+text = "balloon"
+for i in text:
+    print(i)
