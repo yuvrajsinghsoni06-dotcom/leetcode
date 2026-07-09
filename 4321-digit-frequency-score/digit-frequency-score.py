@@ -1,12 +1,10 @@
-
 class Solution:
     def digitFrequencyScore(self, n: int) -> int:
-        m = str(n)
-        summ = 0
-        for i in m:
-            summ += int(i)
+        score = 0
 
-        return summ
-            
+        while n > 0:
+            digit = n % 10
+            score += digit
+            n //= 10
 
-        
+        return score
