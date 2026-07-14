@@ -12,14 +12,14 @@ class Solution:
         for t in tokens:
             result = 0
             if t in ops:
-                 b = int(stack.pop())
-                 a = int(stack.pop())
+                 b = (stack.pop())
+                 a = (stack.pop())
                  result = ops[t](a,b)
                  stack.append(result)
             else:
-                stack.append(t)
+                stack.append(int(t))
 
-        ans = int(stack[0])
+        ans = (stack[0])
             
 
             
