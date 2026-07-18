@@ -3,19 +3,24 @@ class Solution:
         if not s or len(s) < 2:
             return s
         
-        longest = s[0] # Track the longest palindrome found so far
+        start, max_length = 0, 1
         
+        def expand_around_center(left: int, right: int) -> None:
+            nonlocal start, max_length
+            # Expand outward as long as boundaries are valid and characters match
+            while left >= 0 and right < len(s) and s[left] == s[right]:
+                current_length = right - left + 1
+                # If we found a longer palindrome, track its start and length
+                if current_length > max_length:
+                    max_length = current_length
+                    start = left
+                left -= 1
+                right += 1
+
         for i in range(len(s)):
-            for j in range(len(s) - 1, i, -1):
-                # Optimization: If the remaining distance between i and j is shorter 
-                # than our longest palindrome so far, no need to check further.
-                if (j - i + 1) <= len(longest):
-                    break
-                    
-                if s[i] == s[j]:
-                    left = s[i:j+1]
-                    if left[::-1] == left:
-                        longest = left # Update our tracker instead of returning
-                        break # Break inner loop since this is the longest for this specific 'i'
-                        
-        return longest
+            # Case 1: Odd length palindromes (center is at i)
+            expand_around_center(i, i)
+            # Case 2: Even length palindromes (center is between i and i+1)
+            expand_around_center(i, i + 1)
+            
+        return s[start : start + max_length]
