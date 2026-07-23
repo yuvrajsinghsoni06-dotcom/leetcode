@@ -1,2 +1,8 @@
 -- Write your PostgreSQL query statement below
-SELECT name from Customer where referee_id is null or referee_id != 2;
+SELECT name 
+FROM Customer 
+WHERE id NOT IN (
+    SELECT id 
+    FROM Customer 
+    WHERE referee_id = 2
+);
