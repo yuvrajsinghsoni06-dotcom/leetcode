@@ -1,5 +1,5 @@
 -- Write your PostgreSQL query stat
-SELECT unique_id , name
+SELECT b.unique_id , a.name
 FROM Employees a
 left JOIN
 EmployeeUNI b
