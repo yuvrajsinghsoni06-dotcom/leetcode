@@ -1,6 +1,6 @@
 -- Write your PostgreSQL query statement below
 SELECT p.product_name , 
-s.year , s.price 
+s.year , price 
 from Sales s 
-inner join Product p
+left join Product p
 on s.product_id = p.product_id;
