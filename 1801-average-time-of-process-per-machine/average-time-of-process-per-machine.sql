@@ -3,7 +3,7 @@ SELECT
     ROUND(AVG(b.timestamp - a.timestamp)::numeric, 3) AS processing_time
 FROM 
     Activity a
-JOIN 
+inner JOIN 
     Activity b 
     ON a.machine_id = b.machine_id 
    AND a.process_id = b.process_id
