@@ -7,5 +7,5 @@ ROUND(
 )AS average_years
 from Project p
  join Employee e
-on p.employee_id = e.employee_id
-group by p.project_id  ;
+ON p.employee_id = e.employee_id
+GROUP BY  p.project_id ;
