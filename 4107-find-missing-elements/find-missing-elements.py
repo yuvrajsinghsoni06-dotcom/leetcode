@@ -1,6 +1,4 @@
 class Solution:
     def findMissingElements(self, nums: List[int]) -> List[int]:
-        x = min(nums)
-        y = max(nums)
-        llist = [i for i in range(x,y+1) if i not in nums]
-        return sorted(llist)
+        num_set = set(nums)
+        return [x for x in range(min(nums), max(nums) + 1) if x not in num_set]
