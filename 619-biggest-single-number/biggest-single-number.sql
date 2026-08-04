@@ -1,10 +1,8 @@
--- Write your PostgreSQL query statement below
 select max(num) as num
-from (
-    select num
-    from MyNumbers
-    group by num
-    having count(num) = 1
-) ;
-
-
+from mynumbers 
+where num in(
+    select * 
+    from mynumbers 
+    group by num 
+    having count(*)=1
+);
