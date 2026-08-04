@@ -1,13 +1,6 @@
 class Solution:
     def findMissingElements(self, nums: List[int]) -> List[int]:
-        nums = sorted(nums)
-        curr = nums[0]
-        ans = []
-        for num in nums:
-            while curr < num:
-                ans.append(curr)
-                curr += 1
-            curr = num + 1
-
-        return ans
-        
+        num_set = set(nums)
+        x = min(nums)
+        y = max(nums)
+        return [x for x in range(x, y + 1) if x not in num_set]
