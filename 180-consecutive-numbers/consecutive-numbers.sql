@@ -1,15 +1,8 @@
--- Write your PostgreSQL query statement below
-with ranklogs as (
-    select num,
-    lead(num,1) over(order by id) as next_num,
-    lag(num,1) over(order by id ) as prev_num
-    from logs
-)
-select distinct num as ConsecutiveNums
-from ranklogs
-where num = next_num and num = prev_num;
-
-
-
-
- 
+SELECT DISTINCT l1.num AS "ConsecutiveNums"
+FROM Logs l1
+JOIN Logs l2
+    ON l1.id = l2.id - 1
+JOIN Logs l3
+    ON l2.id = l3.id - 1
+WHERE l1.num = l2.num
+  AND l2.num = l3.num;
