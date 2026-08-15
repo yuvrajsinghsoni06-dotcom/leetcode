@@ -5,7 +5,7 @@ country,
 count(*) as Trans_count,
 count(case when state = 'approved' then 1 end) as approved_count,
 sum(amount) as trans_total_amount,
-sum(case when state = 'approved' then amount else 0 end) as approved_total_amount
+coalesce(sum(amount) filter (where state = 'approved'),0) as approved_total_amount
 from transactions
 group by to_char(trans_date, 'YYYY-MM') , country;
 
