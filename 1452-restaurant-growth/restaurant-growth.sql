@@ -1,21 +1,26 @@
-with daily_amount as(
-    select visited_on , 
-    sum(amount) as amount
-    from customer
-    group by visited_on
+WITH mount AS (
+    SELECT 
+        visited_on, 
+        SUM(amount) AS daily_expense 
+    FROM customer 
+    GROUP BY visited_on
 ),
-second_half as (
-    select visited_on,
-    SUM(amount) over(
-        order by visited_on range between interval '6 days' preceding and current row
-    ) as amount,
-    round(
-        Avg(amount) over( order by visited_on range between interval '6 days' preceding and current row),2
-    ) as average_amount
-    from daily_amount
+second_half AS (
+    SELECT 
+        visited_on,
+        SUM(daily_expense) OVER (
+            ORDER BY visited_on 
+            RANGE BETWEEN INTERVAL '6 days' PRECEDING AND CURRENT ROW
+        ) AS amount,
+        ROUND(
+            AVG(daily_expense) OVER (
+                ORDER BY visited_on 
+                RANGE BETWEEN INTERVAL '6 days' PRECEDING AND CURRENT ROW
+            ), 2
+        ) AS average_amount
+    FROM mount
 )
-
-select visited_on , amount , average_amount
-from second_half
-where visited_on >= (select min(visited_on) + interval '6 days' from customer)
-order by visited_on asc;
+SELECT visited_on, amount, average_amount
+FROM second_half
+WHERE visited_on >= (SELECT MIN(visited_on) + INTERVAL '6 days' FROM customer)
+ORDER BY visited_on ASC;
