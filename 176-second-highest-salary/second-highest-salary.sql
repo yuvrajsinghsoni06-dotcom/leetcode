@@ -1,8 +1,6 @@
--- Write your PostgreSQL query statement below
-select coalesce(
-(select distinct salary
-from employee
-order by salary desc
-limit 1 offset 1),
-null
-) as SecondHighestSalary;
+SELECT (
+    SELECT DISTINCT salary
+    FROM Employee
+    ORDER BY salary DESC
+    LIMIT 1 OFFSET 1
+) AS SecondHighestSalary;
