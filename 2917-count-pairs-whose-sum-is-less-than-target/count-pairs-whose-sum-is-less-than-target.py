@@ -1,13 +1,15 @@
 class Solution:
     def countPairs(self, nums: List[int], target: int) -> int:
-        n = len(nums)
+        nums.sort()
+        left, right = 0, len(nums) - 1
         count = 0
-        for i in range(n):
-           for j in range(i+1,n):
-            total = nums[i] + nums[j]
-            if total < target:
-                count +=1
-
+        
+        while left < right:
+            if nums[left] + nums[right] < target:
+                # All elements from left+1 to right form a valid pair with nums[left]
+                count += right - left
+                left += 1
+            else:
+                right -= 1
+                
         return count
-    
-            
