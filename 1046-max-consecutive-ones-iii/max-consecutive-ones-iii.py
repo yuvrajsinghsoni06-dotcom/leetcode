@@ -10,7 +10,7 @@ class Solution:
                 left += 1
         
 
-        return len(nums) - left
+        return right - left + 1
 
 
 
