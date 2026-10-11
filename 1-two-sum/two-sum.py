@@ -1,10 +1,10 @@
 class Solution:
-    def twoSum(self, nums: List[int], target: int) -> List[int]:
-        hashmap = {}
+    def twoSum(self, nums: list[int], target: int) -> list[int]:
+        coll = {}
         for i in range(len(nums)):
-            complement = target - nums[i]
-            if complement in hashmap:
-                return [i, hashmap[complement]]
-            hashmap[nums[i]] = i
-        # Return an empty list if no solution is found
-        return []
+            complementary = target - nums[i]
+            if complementary in coll:
+                return [i,coll[complementary]]
+            coll[nums[i]] = i
+
+        
