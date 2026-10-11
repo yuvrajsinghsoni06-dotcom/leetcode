@@ -1,14 +1,14 @@
 class Solution:
     def maxProduct(self, nums: list[int]) -> int:
-        maax = nums[0]
-        mini = nums[0]
-        res = nums[0]
+        lit,too,res = nums[0],nums[0],nums[0]
         for i in range(1,len(nums)):
             curr = nums[i]
             if curr < 0:
-                maax , mini = mini,maax
-            maax = max(curr,maax*curr)
-            mini = min(curr,mini*curr)
-            res = max(res,maax)
+                lit,too = too,lit
+            too = max(curr,too*curr)
+            lit = min(curr,lit*curr)
+            res = max(res,too)
 
         return res
+            
+        
