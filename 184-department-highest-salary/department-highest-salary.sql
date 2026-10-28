@@ -5,7 +5,7 @@ WITH rankingsalary AS (
         name, 
         salary, 
         departmentId, 
-        DENSE_RANK() OVER (PARTITION BY departmentId ORDER BY salary DESC) AS rk 
+        RANK() OVER (PARTITION BY departmentId ORDER BY salary DESC) AS rk 
     FROM employee
 ) 
 SELECT 
